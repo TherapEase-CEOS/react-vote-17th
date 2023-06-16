@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
+import React from 'react';
 import LoginPage from './pages/Login/LoginPage';
 import SignUpPage from './pages/SignUp/SignUpPage';
 import MainPage from './pages/Main/MainPage';
