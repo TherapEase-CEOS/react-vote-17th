@@ -2,7 +2,9 @@ import React from 'react';
 import { Headline } from '../../styles/Typography';
 import SelectBtn from '../../components/SelectBtn';
 import { Box } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 const MainPage = () => {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -28,11 +30,11 @@ const MainPage = () => {
       >
         <SelectBtn
           title="파트장 투표 바로가기"
-          onClick={() => console.log('click')}
+          onClick={() => navigate('/part')}
         />
         <SelectBtn
           title="데모데이 투표바로가기"
-          onClick={() => console.log('click')}
+          onClick={() => navigate('/demo')}
         />
       </Box>
     </Box>
