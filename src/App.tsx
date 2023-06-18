@@ -40,10 +40,16 @@ function App() {
 
 const Layout = () => {
   return (
-    <>
+    <div
+      style={{
+        width: '100vw',
+        height: 'calc(100vh - 3.5rem)',
+        paddingTop: '3.5rem',
+      }}
+    >
       <Header />
       <Outlet />
-    </>
+    </div>
   );
 };
 
