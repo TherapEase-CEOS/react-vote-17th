@@ -76,6 +76,7 @@ const Body = styled.span<FontProps>`
     `}
   line-height: 24px;
   letter-spacing: -0.022em;
+  white-space: nowrap;
 `;
 
 export { Headline, ButtonText, CustomFont, Body, Title };
