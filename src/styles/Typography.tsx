@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 interface FontProps {
   weight?: number;
   color?: string;
   size?: number;
+  inherit?: boolean;
 }
 
 const Headline = styled.header<FontProps>`
@@ -11,6 +13,11 @@ const Headline = styled.header<FontProps>`
   font-weight: ${({ weight }) => (weight ? weight : 600)};
   font-size: ${({ size }) => (size ? size : '2.5rem')}; // 48px
   color: ${({ color }) => (color ? color : `var(--ceos-blue-color)`)};
+  ${({ inherit }) =>
+    inherit &&
+    css`
+      color: inherit;
+    `}
   font-family: 'Inter';
   font-style: normal;
   line-height: 80px;
