@@ -13,9 +13,9 @@ const MainBtn: React.FC<ButtonProps> = ({ children, onClick }) => {
   return (
     <Button
       sx={{
-        width: '250px',
-        height: '70px',
-        borderRadius: '20px',
+        width: '220px',
+        height: '50px',
+        borderRadius: '10px',
       }}
       onClick={onClick}
       variant="contained"

@@ -13,8 +13,8 @@ const SelectBtn: React.FC<SelectBtnProps> = ({ title, onClick }) => {
   return (
     <Button
       sx={{
-        width: '350px',
-        height: '350px',
+        width: '320px',
+        height: '320px',
         backgroundColor: 'primary.white',
         border: '2px solid ',
         borderColor: 'primary.main',
