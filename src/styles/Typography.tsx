@@ -34,6 +34,21 @@ const ButtonText = styled.span<FontProps>`
   margin: 0;
 `;
 
+const Title = styled.span<FontProps>`
+  font-family: 'Inter';
+  font-style: normal;
+
+  font-weight: ${({ weight }) => (weight ? weight : 600)};
+  font-size: ${({ size }) => (size ? size : '2.3rem')};
+  color: ${({ color }) => (color ? color : `#000000`)};
+  ${({ inherit }) =>
+    inherit &&
+    css`
+      color: inherit;
+    `}
+  margin: 0;
+`;
+
 const CustomFont = styled.span<FontProps>`
   font-family: 'Inter';
   font-style: normal;
@@ -49,13 +64,18 @@ const CustomFont = styled.span<FontProps>`
 const Body = styled.span<FontProps>`
   font-family: 'Inter';
   font-style: normal;
-  font-weight: ${({ weight }) => (weight ? weight : 500)};
-  font-size: ${({ size }) => (size ? size : '1.5rem')};
-  color: ${({ color }) => (color ? color : `var(--black)`)};
-  margin: 0;
 
+  font-weight: ${({ weight }) => (weight ? weight : 500)};
+  font-size: ${({ size }) => (size ? size : '1rem')};
+  color: ${({ color }) => (color ? color : `#000000`)};
+  margin: 0;
+  ${({ inherit }) =>
+    inherit &&
+    css`
+      color: inherit;
+    `}
   line-height: 24px;
   letter-spacing: -0.022em;
 `;
 
-export { Headline, ButtonText, CustomFont, Body };
+export { Headline, ButtonText, CustomFont, Body, Title };
