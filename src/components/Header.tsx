@@ -63,10 +63,13 @@ const Header = () => {
 };
 
 const Container = styled.div`
+  position: fixed;
+  top: 0;
   width: 100vw;
   height: 3.5rem;
   display: flex;
   align-items: center;
+  background-color: #ffff;
 
   .ceosLogo {
     cursor: pointer;
