@@ -5,11 +5,11 @@ import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import { Headline } from '../styles/Typography';
 
-interface SelectBoxProps {
+interface SelectBtnProps {
   title: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>; //(e: MouseEvent<Element, MouseEvent>) => void
 }
-const SelectBox: React.FC<SelectBoxProps> = ({ title, onClick }) => {
+const SelectBtn: React.FC<SelectBtnProps> = ({ title, onClick }) => {
   return (
     <Button
       sx={{
@@ -22,20 +22,14 @@ const SelectBox: React.FC<SelectBoxProps> = ({ title, onClick }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        color: 'primary.main',
         padding: '20px 10px',
-        '&:hover': {
-          backgroundColor: 'primary.main',
-          opacity: [0.9, 0.8, 0.7],
-          cursor: 'pointer',
-          color: 'white',
-        },
       }}
       onClick={onClick}
+      variant="outlined"
     >
       <Headline inherit>{title}</Headline>
     </Button>
   );
 };
 
-export default SelectBox;
+export default SelectBtn;

@@ -8,17 +8,6 @@ interface ButtonProps {
   bgColor?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
-/*
-
-   
-  width: 250px;
-  height: 70px;
-  border: none;
-  border-radius: 20px;
-  background-color: ${({ bgColor }) =>
-    bgColor ? bgColor : 'var(--ceos-blue-color)'};
-    ,
-    */
 
 const MainBtn: React.FC<ButtonProps> = ({ children, onClick }) => {
   return (
@@ -26,7 +15,6 @@ const MainBtn: React.FC<ButtonProps> = ({ children, onClick }) => {
       sx={{
         width: '250px',
         height: '70px',
-        border: 'none',
         borderRadius: '20px',
       }}
       onClick={onClick}

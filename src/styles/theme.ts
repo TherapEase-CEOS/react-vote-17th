@@ -23,6 +23,17 @@ const theme = createTheme({
             },
           },
         },
+        {
+          props: { variant: 'outlined' },
+          style: {
+            color: '#384084',
+            backgroundColor: 'transparent',
+            '&:hover': {
+              color: '#ffff',
+              backgroundColor: '#384084',
+            },
+          },
+        },
       ],
     },
   },
