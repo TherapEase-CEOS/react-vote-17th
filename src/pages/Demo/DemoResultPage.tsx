@@ -4,6 +4,7 @@ import { Headline } from '../../styles/Typography';
 import RankCard from '../../components/RankCard';
 import MainBtn from '../../components/MainBtn';
 import { useNavigate } from 'react-router-dom';
+import SizedBox from '../../components/SizedBox';
 
 const DemoResultPage = () => {
   const navigate = useNavigate();
@@ -47,24 +48,37 @@ const DemoResultPage = () => {
         flexDirection: 'column',
         height: '100%',
         width: '100%',
-        overflowY: 'scroll',
-        gap: '10px',
-        justifyContent: 'space-around',
         alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Headline>데모데이 투표 결과</Headline>
-      {services.map(({ title, description, rank, votes }) => (
-        <RankCard
-          key={title}
-          title={title}
-          description={description}
-          rank={rank}
-          votes={votes}
-        />
-      ))}
+      <SizedBox height={'50px'} />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
 
-      <MainBtn onClick={() => navigate('/demo')}>돌아가기</MainBtn>
+          width: '100%',
+          gap: '15px',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        {services.map(({ title, description, rank, votes }) => (
+          <RankCard
+            key={title}
+            title={title}
+            description={description}
+            rank={rank}
+            votes={votes}
+          />
+        ))}
+        <SizedBox height={'40px'} />
+        <MainBtn onClick={() => navigate('/demo')}>돌아가기</MainBtn>
+      </Box>
+
+      <SizedBox height={'5vh'} />
     </Box>
   );
 };

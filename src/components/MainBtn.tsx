@@ -13,8 +13,8 @@ const MainBtn: React.FC<ButtonProps> = ({ children, onClick }) => {
   return (
     <Button
       sx={{
-        width: '250px',
-        height: '70px',
+        width: '200px',
+        height: '50px',
         borderRadius: '20px',
       }}
       onClick={onClick}
