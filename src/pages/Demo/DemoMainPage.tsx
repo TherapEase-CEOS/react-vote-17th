@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MainBtn from '../../components/MainBtn';
-import { Headline } from '../../styles/Typography';
+import { Headline } from '../../components/Typography';
 import { Box } from '@mui/material';
 import SizedBox from '../../components/SizedBox';
 import { useNavigate } from 'react-router-dom';

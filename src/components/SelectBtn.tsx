@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { ButtonText } from '../styles/Typography';
+import { ButtonText } from './Typography';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
-import { Headline } from '../styles/Typography';
+import { Headline } from './Typography';
 
 interface SelectBtnProps {
   title: string;
@@ -13,8 +13,8 @@ const SelectBtn: React.FC<SelectBtnProps> = ({ title, onClick }) => {
   return (
     <Button
       sx={{
-        width: '320px',
-        height: '320px',
+        width: '350px',
+        height: '350px',
         backgroundColor: 'primary.white',
         border: '2px solid ',
         borderColor: 'primary.main',
