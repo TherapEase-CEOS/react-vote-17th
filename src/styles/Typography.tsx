@@ -86,4 +86,12 @@ const Body = styled.span<FontProps>`
   white-space: nowrap;
 `;
 
-export { Headline, ButtonText, CustomFont, Body, Title };
+const ValidationErrorText = styled.span`
+  width: 100%;
+  margin-top: -0.5rem;
+  font-size: 0.5rem;
+  color: red;
+  text-align: start;
+`;
+
+export { Headline, ButtonText, CustomFont, Body, Title, ValidationErrorText };

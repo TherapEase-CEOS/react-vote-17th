@@ -1,27 +1,49 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 import styled from '@emotion/styled';
 
-import { Headline } from '../../styles/Typography';
+import { Headline, ValidationErrorText } from '../../styles/Typography';
 import { Button, MenuItem, TextField } from '@mui/material';
 
+import { REGEX } from '../../utils/regex';
+
+import { PART_OPTIONS, TEAM_OPTIONS } from '../../constants/selectOptions';
+
+interface signupFormValues {
+  userName: string;
+  userId: string;
+  userPassword: string;
+  passwordCheck: string;
+  userEmail: string;
+  teamName: string;
+  partName: string;
+}
+
 const SignUpPage = () => {
-  const teamOptions = [
-    { label: 'TherapEase', value: 'TherapEase' },
-    { label: 'RePick', value: 'RePick' },
-    { label: 'BariBari', value: 'BariBari' },
-    { label: 'Hooking', value: 'Hooking' },
-    { label: 'Dansupport', value: 'Dansupport' },
-  ];
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<signupFormValues>();
 
-  const partOptions = [
-    { label: 'FRONTEND', value: 'fe' },
-    { label: 'BACKEND', value: 'be' },
-  ];
+  const [checkPasswordMessage, setCheckPasswordMessage] = useState<
+    string | null
+  >(null);
 
-  const [teamName, setTeamName] = useState<string>('');
-  const [partName, setPartName] = useState<string>('');
+  const checkPassword = (e: any) => {
+    if (e.target.value === watch('userPassword')) {
+      setCheckPasswordMessage(null);
+    } else {
+      setCheckPasswordMessage('비밀번호가 일치하지 않습니다.');
+    }
+  };
+
+  const onSubmit: SubmitHandler<signupFormValues> = (data) => {
+    // TODO - api 연동
+    console.log(data);
+  };
 
   return (
     <Wrapper>
@@ -31,94 +53,138 @@ const SignUpPage = () => {
       >
         회원가입
       </Headline>
-      <FormWrapper>
+      <FormWrapper onSubmit={handleSubmit(onSubmit)}>
         <TextField
-          required
           id="userName"
           label="이름"
           variant="outlined"
           size="small"
           fullWidth={true}
+          {...register('userName', {
+            required: { value: true, message: '*이름을 입력해주세요.' },
+          })}
         />
+        <ValidationErrorText>{errors?.userName?.message}</ValidationErrorText>
+
         <TextField
-          required
           id="userId"
           label="아이디"
           variant="outlined"
           size="small"
           fullWidth={true}
+          {...register('userId', {
+            required: { value: true, message: '*아이디를 입력해주세요.' },
+          })}
         />
+        <ValidationErrorText>{errors?.userId?.message}</ValidationErrorText>
+
         <TextField
-          required
           id="userPassword"
           label="비밀번호"
           type="password"
           variant="outlined"
           size="small"
           fullWidth={true}
+          {...register('userPassword', {
+            required: { value: true, message: '*비밀번호를 입력해주세요.' },
+            pattern: {
+              value: REGEX.password,
+              message: '*비밀번호: 8~16자 영문 대소문자, 숫자를 입력해주세요.',
+            },
+          })}
         />
+        <ValidationErrorText>
+          {errors?.userPassword?.message}
+        </ValidationErrorText>
+
         <TextField
-          required
-          id="passwordValidation"
+          id="passwordCheck"
           label="비밀번호 확인"
           type="password"
           variant="outlined"
           size="small"
           fullWidth={true}
+          {...register('passwordCheck', {
+            required: {
+              value: true,
+              message: '*비밀번호를 한 번 더 입력해주세요.',
+            },
+            onChange: checkPassword,
+          })}
         />
+        <ValidationErrorText>
+          {checkPasswordMessage ?? errors?.passwordCheck?.message}
+        </ValidationErrorText>
+
         <TextField
-          required
           id="userEmail"
           label="이메일 주소"
           variant="outlined"
           size="small"
           fullWidth={true}
+          {...register('userEmail', {
+            required: { value: true, message: '*이메일을 입력해주세요.' },
+            pattern: {
+              value: REGEX.email,
+              message: '*이메일 형식을 입력해주세요.',
+            },
+          })}
         />
+        <ValidationErrorText>{errors?.userEmail?.message}</ValidationErrorText>
 
-        <div className="select-box-wrapper">
-          <TextField
-            id="teamName"
-            required
-            select
-            label="팀 명"
-            value={teamName}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setTeamName(event.target.value);
-            }}
-            variant="filled"
-            size="small"
-            sx={{ width: '190px' }}
-          >
-            {teamOptions.map(({ label, value }) => (
-              <MenuItem key={value} value={value}>
-                {label}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            id="partName"
-            required
-            select
-            label="파트"
-            value={partName}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              setPartName(event.target.value);
-            }}
-            variant="filled"
-            size="small"
-            sx={{ width: '190px' }}
-          >
-            {partOptions.map(({ label, value }) => (
-              <MenuItem key={value} value={value}>
-                {label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </div>
+        <SelectBoxWrapper>
+          <div>
+            <TextField
+              id="teamName"
+              select
+              label="팀 명"
+              defaultValue=""
+              variant="filled"
+              size="small"
+              sx={{ width: '9rem' }}
+              {...register('teamName', {
+                required: { value: true, message: '*팀을 선택해주세요.' },
+              })}
+            >
+              {TEAM_OPTIONS.map(({ label, value }) => (
+                <MenuItem key={value} value={value}>
+                  {label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <ValidationErrorText>
+              {errors?.teamName?.message}
+            </ValidationErrorText>
+          </div>
+          <div>
+            <TextField
+              id="partName"
+              select
+              label="파트"
+              defaultValue=""
+              variant="filled"
+              size="small"
+              sx={{ width: '9rem' }}
+              {...register('partName', {
+                required: { value: true, message: '*파트를 선택해주세요.' },
+              })}
+            >
+              {PART_OPTIONS.map(({ label, value }) => (
+                <MenuItem key={value} value={value}>
+                  {label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <ValidationErrorText>
+              {errors?.partName?.message}
+            </ValidationErrorText>
+          </div>
+        </SelectBoxWrapper>
+
         <Button
           type="submit"
           variant="contained"
-          sx={{ width: '150px', marginTop: '1rem' }}
+          sx={{ width: '10rem', marginTop: '1rem' }}
         >
           가입하기
         </Button>
@@ -148,11 +214,17 @@ const FormWrapper = styled.form`
   border-radius: 1.25rem;
   border: 3px solid #fff;
   gap: 1rem;
+`;
+const SelectBoxWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
 
-  .select-box-wrapper {
-    width: 100%;
+  > div {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 1rem;
   }
 `;
 
