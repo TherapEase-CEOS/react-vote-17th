@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { ButtonText } from '../styles/Typography';
+import { ButtonText } from './Typography';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
-import { Headline } from '../styles/Typography';
+import { Headline } from './Typography';
 
 interface SelectBtnProps {
   title: string;

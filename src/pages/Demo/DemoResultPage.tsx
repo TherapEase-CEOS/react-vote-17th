@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { Headline } from '../../styles/Typography';
+import { Headline } from '../../components/Typography';
 import RankCard from '../../components/RankCard';
 import MainBtn from '../../components/MainBtn';
 import { useNavigate } from 'react-router-dom';

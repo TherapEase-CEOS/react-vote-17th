@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { ButtonText } from '../styles/Typography';
+import { ButtonText } from './Typography';
 import { Button } from '@mui/material';
 
 interface ButtonProps {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
-import { Headline, Title, Body } from '../../styles/Typography';
+import { Headline, Title, Body } from '../../components/Typography';
 
 interface DemoCardProps {
   title: string;

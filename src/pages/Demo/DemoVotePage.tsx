@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Headline } from '../../styles/Typography';
+import { Headline } from '../../components/Typography';
 import { Box } from '@mui/material';
 import MainBtn from '../../components/MainBtn';
 import DemoCard from './DemoCard';
