@@ -3,10 +3,12 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import styled from '@emotion/styled';
 
-import { Headline, ValidationErrorText } from '../../styles/Typography';
+import { Headline } from '../../styles/Typography';
 import { Button, TextField } from '@mui/material';
 
 import { REGEX } from '../../utils/regex';
+
+import { SIGNUP_LOGIN_ERROR_MESSAGES } from '../../constants/errorMesssages';
 
 interface loginFormValues {
   userId: string;
@@ -37,34 +39,36 @@ const LoginPage = () => {
         <TextField
           id="userId"
           label="아이디"
+          helperText={errors?.userId?.message}
           variant="outlined"
           size="small"
           fullWidth={true}
           {...register('userId', {
-            required: { value: true, message: '*아이디를 입력해주세요.' },
+            required: {
+              value: true,
+              message: SIGNUP_LOGIN_ERROR_MESSAGES.userId,
+            },
           })}
         />
-        <ValidationErrorText>{errors?.userId?.message}</ValidationErrorText>
-
         <TextField
           id="userPassword"
           label="비밀번호"
           type="password"
+          helperText={errors?.userPassword?.message}
           variant="outlined"
           size="small"
           fullWidth={true}
           {...register('userPassword', {
-            required: { value: true, message: '*비밀번호를 입력해주세요.' },
+            required: {
+              value: true,
+              message: SIGNUP_LOGIN_ERROR_MESSAGES.pw[0],
+            },
             pattern: {
               value: REGEX.password,
-              message: '*비밀번호: 8~16자 영문 대소문자, 숫자를 입력해주세요.',
+              message: SIGNUP_LOGIN_ERROR_MESSAGES.pw[1],
             },
           })}
         />
-        <ValidationErrorText>
-          {errors?.userPassword?.message}
-        </ValidationErrorText>
-
         <Button
           type="submit"
           variant="contained"
