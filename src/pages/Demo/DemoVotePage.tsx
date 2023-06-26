@@ -1,35 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Headline } from '../../components/Typography';
 import { Box } from '@mui/material';
 import MainBtn from '../../components/MainBtn';
 import DemoCard from './DemoCard';
 import { useNavigate } from 'react-router-dom';
 import SizedBox from '../../components/SizedBox';
+import DemoService from '../../services/DemoService';
+import { IDemoService } from '../interface/interface';
 const DemoVotePage = () => {
+  const handleDataFetching = async () => {
+    const candidates = await DemoService.getServices();
+
+    setServices(candidates);
+  };
+  useEffect(() => {
+    handleDataFetching();
+  }, []);
+
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(0);
-  const services = [
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-    },
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-    },
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-    },
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-    },
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-    },
-  ];
+
+  const [services, setServices] = useState<IDemoService[]>();
+  const [selected, setSelected] = useState<string>('0');
+
   return (
     <Box
       sx={{
@@ -66,13 +58,13 @@ const DemoVotePage = () => {
             marginBottom: 'auto',
           }}
         >
-          {services.map(({ title, description }, idx) => (
+          {services?.map(({ name, description, candidateId }: IDemoService) => (
             <DemoCard
-              key={title}
-              title={title}
+              key={name}
+              title={name}
               description={description}
-              onClick={() => setSelected(idx)}
-              selected={idx == selected}
+              onClick={() => setSelected(candidateId)}
+              selected={candidateId == selected}
             />
           ))}
         </Box>
