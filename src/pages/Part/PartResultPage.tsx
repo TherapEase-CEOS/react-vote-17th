@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 
 import styled from '@emotion/styled';
 
-import { Headline } from '../../styles/Typography';
+import { Headline } from '../../components/Typography';
 import RankCard from '../../components/RankCard';
 import MainBtn from '../../components/MainBtn';
 

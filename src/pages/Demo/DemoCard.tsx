@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
-import { Headline, Title, Body } from '../../styles/Typography';
+import { Headline, Title, Body } from '../../components/Typography';
 
 interface DemoCardProps {
   title: string;
@@ -15,8 +15,8 @@ const DemoCard: React.FC<DemoCardProps> = ({
   onClick,
 }) => {
   const defaultStyle = {
-    width: '350px',
-    height: '120px',
+    width: '20rem',
+    height: '8rem',
     border: '2px solid ',
     borderRadius: '20px',
     display: 'flex',
@@ -26,8 +26,8 @@ const DemoCard: React.FC<DemoCardProps> = ({
   };
 
   const selectedStyle = {
-    width: '350px',
-    height: '120px',
+    width: '20rem',
+    height: '8rem',
     border: '2px solid ',
     borderRadius: '20px',
     display: 'flex',

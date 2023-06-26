@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 
 import styled from '@emotion/styled';
 
-import { Headline } from '../../styles/Typography';
+import { Headline } from '../../components/Typography';
 import PartVoteCard from './PartVoteCard';
 import MainBtn from '../../components/MainBtn';
 

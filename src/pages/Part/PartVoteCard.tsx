@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button } from '@mui/material';
-import { CustomFont } from '../../styles/Typography';
+import { CustomFont } from '../../components/Typography';
 
 interface PartVoteCardProps {
   memberInfo: { teamName: string; userName: string };

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import styled from '@emotion/styled';
 
-import { Headline } from '../../styles/Typography';
+import { Headline } from '../../components/Typography';
 import SelectBtn from '../../components/SelectBtn';
 import MainBtn from '../../components/MainBtn';
 

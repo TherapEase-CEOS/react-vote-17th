@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { ButtonText } from '../styles/Typography';
+import { ButtonText } from './Typography';
 import { Button } from '@mui/material';
 
 interface ButtonProps {
@@ -13,9 +13,9 @@ const MainBtn: React.FC<ButtonProps> = ({ children, onClick }) => {
   return (
     <Button
       sx={{
-        width: '220px',
+        width: '200px',
         height: '50px',
-        borderRadius: '10px',
+        borderRadius: '20px',
       }}
       onClick={onClick}
       variant="contained"
