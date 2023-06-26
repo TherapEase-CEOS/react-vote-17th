@@ -80,11 +80,6 @@ const CustomFont = styled.span<FontProps>`
   font-weight: ${({ weight }) => (weight ? weight : 300)};
   font-size: ${({ size }) => (size ? size : '1rem')};
   color: ${({ color }) => (color ? color : `black`)};
-  ${({ inherit }) =>
-    inherit &&
-    css`
-      color: inherit;
-    `}
   margin: 0;
 
   line-height: 150%;
