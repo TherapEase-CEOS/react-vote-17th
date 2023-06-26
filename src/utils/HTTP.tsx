@@ -6,6 +6,7 @@ const AxiosModule = () => {
   return axios.create({
     baseURL: API_SERVER_BASE_URL,
     headers: {
+      'Content-Type': 'application/json',
       Authorization: `bearer ${token}`,
     },
   });
