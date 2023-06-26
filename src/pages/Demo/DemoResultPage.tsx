@@ -1,46 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { Headline } from '../../components/Typography';
 import RankCard from '../../components/RankCard';
 import MainBtn from '../../components/MainBtn';
 import { useNavigate } from 'react-router-dom';
 import SizedBox from '../../components/SizedBox';
-
+import DemoService from '../../services/DemoService';
+import { IDemoService } from '../../interface/interface';
 const DemoResultPage = () => {
   const navigate = useNavigate();
+  const handleDataFetching = async () => {
+    const candidates = await DemoService.getVoteResults();
 
-  const services = [
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-      rank: 1,
-      votes: 5,
-    },
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-      rank: 2,
-      votes: 4,
-    },
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-      rank: 3,
-      votes: 3,
-    },
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-      rank: 4,
-      votes: 2,
-    },
-    {
-      title: 'FINBLE',
-      description: '주식 관리 포트폴리오 서비스',
-      rank: 5,
-      votes: 1,
-    },
-  ];
+    setServices(candidates);
+  };
+  useEffect(() => {
+    handleDataFetching();
+  }, []);
+
+  const [services, setServices] = useState<IDemoService[]>();
   return (
     <Box
       sx={{
@@ -65,13 +43,13 @@ const DemoResultPage = () => {
           alignItems: 'center',
         }}
       >
-        {services.map(({ title, description, rank, votes }) => (
+        {services?.map(({ name, description, voteCount }, idx) => (
           <RankCard
-            key={title}
-            title={title}
+            key={name}
+            title={name}
             description={description}
-            rank={rank}
-            votes={votes}
+            rank={idx + 1}
+            votes={voteCount || 0}
           />
         ))}
         <SizedBox height={'40px'} />

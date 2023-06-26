@@ -6,7 +6,8 @@ import DemoCard from './DemoCard';
 import { useNavigate } from 'react-router-dom';
 import SizedBox from '../../components/SizedBox';
 import DemoService from '../../services/DemoService';
-import { IDemoService } from '../interface/interface';
+import { IDemoService } from '../../interface/interface';
+
 const DemoVotePage = () => {
   const handleDataFetching = async () => {
     const candidates = await DemoService.getServices();

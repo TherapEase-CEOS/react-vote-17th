@@ -27,6 +27,20 @@ const DemoService = {
 
     return null;
   },
+  getVoteResults: async () => {
+    try {
+      const response = await HTTP.get('/demoResult');
+
+      if (response.status === 200) {
+        return response.data.candidates;
+      }
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+
+    return null;
+  },
 };
 
 export default DemoService;

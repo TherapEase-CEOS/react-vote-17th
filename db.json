@@ -27,5 +27,39 @@
         "description": "댄서들을 위한 플랫폼"
       }
     ]
+  },
+  "demoResult": {
+    "candidates": [
+      {
+        "candidateId": "1",
+        "name": "TherapEase",
+        "description": "상담자와 내담자를 연결해주는 플랫폼",
+        "voteCount": 50
+      },
+      {
+        "candidateId": "2",
+        "name": "Hooking",
+        "description": "마케팅 홍보 문구 레터링 플랫폼",
+        "voteCount": 40
+      },
+      {
+        "candidateId": "3",
+        "name": "Repick",
+        "description": "중고 의류 거래 플랫폼",
+        "voteCount": 30
+      },
+      {
+        "candidateId": "4",
+        "name": "BariBari",
+        "description": "반찬가게 서비스",
+        "voteCount": 20
+      },
+      {
+        "candidateId": "5",
+        "name": "Dancerport",
+        "description": "댄서들을 위한 플랫폼",
+        "voteCount": 10
+      }
+    ]
   }
 }
