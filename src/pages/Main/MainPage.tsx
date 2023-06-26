@@ -1,5 +1,5 @@
 import React from 'react';
-import { Headline } from '../../styles/Typography';
+import { Headline } from '../../components/Typography';
 import SelectBtn from '../../components/SelectBtn';
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
