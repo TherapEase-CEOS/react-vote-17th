@@ -17,6 +17,15 @@ const DemoVotePage = () => {
     handleDataFetching();
   }, []);
 
+  const handleVote = async () => {
+    var body = { candidateId: selected };
+    const response = await DemoService.vote(body);
+    if (response?.status === 200) {
+      alert('투표가 완료되었습니다.');
+    } else {
+      alert('투표에 실패하였습니다. 다시 시도해주세요.');
+    }
+  };
   const navigate = useNavigate();
 
   const [services, setServices] = useState<IDemoService[]>();
@@ -80,7 +89,7 @@ const DemoVotePage = () => {
           }}
         >
           {' '}
-          <MainBtn>투표하기</MainBtn>
+          <MainBtn onClick={handleVote}>투표하기</MainBtn>
           <MainBtn onClick={() => navigate('/demo/result')}>결과보기</MainBtn>
         </Box>
       </Box>
