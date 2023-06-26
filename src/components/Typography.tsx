@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 interface FontProps {
   weight?: number;
   color?: string;
-  size?: number;
+  size?: string;
   inherit?: boolean;
 }
 
@@ -42,8 +42,13 @@ const ButtonText = styled.span<FontProps>`
   font-family: 'Inter';
   font-style: normal;
   font-weight: ${({ weight }) => (weight ? weight : 400)};
-  font-size: ${({ size }) => (size ? size : '1.7rem')};
+  font-size: ${({ size }) => (size ? size : '1.1rem')};
   color: ${({ color }) => (color ? color : `#FFFDFD`)};
+  ${({ inherit }) =>
+    inherit &&
+    css`
+      color: inherit;
+    `}
   margin: 0;
 `;
 
